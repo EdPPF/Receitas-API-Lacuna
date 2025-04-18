@@ -4,3 +4,5 @@
 - Os ingredientes devem conter, pelo menos, um nome e uma unidade padrão de medida;
 - Cada receita deve incluir os ingredientes registados e as respetivas quantidades;
 - O modo de preparo pode ser descrito num único campo de texto.
+
+Utilizando **.NET 8.0** e **minimal API** e *EntityFrameworkCore*. Banco de dados com SQLite.
