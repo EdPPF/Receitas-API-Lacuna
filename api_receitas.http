@@ -1,0 +1,6 @@
+@api_receitas_HostAddress = http://localhost:5106
+
+GET {{api_receitas_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
