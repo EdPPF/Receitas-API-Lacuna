@@ -29,7 +29,8 @@ public class AppDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlite("Data Source=receitas.sqlite;");
+            // optionsBuilder.UseSqlite("Data Source=receitas.sqlite;");
+            optionsBuilder.UseNpgsql(optionsBuilder.Configuration.GetConnectionString("Default"));
         }
         base.OnConfiguring(optionsBuilder);
     }
