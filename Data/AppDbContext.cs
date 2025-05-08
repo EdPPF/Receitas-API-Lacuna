@@ -13,6 +13,11 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Ajustando nomes para evitar conflitos no postgres
+        modelBuilder.Entity<ReceitaModel>().ToTable("receitas");
+        modelBuilder.Entity<IngredienteModel>().ToTable("ingredientes");
+        modelBuilder.Entity<ReceitaIngredienteModel>().ToTable("receita_ingrediente");
+
         modelBuilder.Entity<ReceitaIngredienteModel>()
             .HasKey(ri => new { ri.ReceitaId, ri.IngredienteId });
 

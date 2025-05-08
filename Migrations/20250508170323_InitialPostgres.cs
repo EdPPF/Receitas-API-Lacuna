@@ -12,7 +12,7 @@ namespace api_receitas.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Ingrediente",
+                name: "ingredientes",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -22,11 +22,11 @@ namespace api_receitas.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ingrediente", x => x.Id);
+                    table.PrimaryKey("PK_ingredientes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Receita",
+                name: "receitas",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -38,7 +38,7 @@ namespace api_receitas.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Receita", x => x.Id);
+                    table.PrimaryKey("PK_receitas", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -52,21 +52,21 @@ namespace api_receitas.Migrations
                 {
                     table.PrimaryKey("PK_IngredienteModelReceitaModel", x => new { x.IngredientesId, x.ReceitasId });
                     table.ForeignKey(
-                        name: "FK_IngredienteModelReceitaModel_Ingrediente_IngredientesId",
+                        name: "FK_IngredienteModelReceitaModel_ingredientes_IngredientesId",
                         column: x => x.IngredientesId,
-                        principalTable: "Ingrediente",
+                        principalTable: "ingredientes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_IngredienteModelReceitaModel_Receita_ReceitasId",
+                        name: "FK_IngredienteModelReceitaModel_receitas_ReceitasId",
                         column: x => x.ReceitasId,
-                        principalTable: "Receita",
+                        principalTable: "receitas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ReceitaIngrediente",
+                name: "receita_ingrediente",
                 columns: table => new
                 {
                     ReceitaId = table.Column<Guid>(type: "uuid", nullable: false),
@@ -75,17 +75,17 @@ namespace api_receitas.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReceitaIngrediente", x => new { x.ReceitaId, x.IngredienteId });
+                    table.PrimaryKey("PK_receita_ingrediente", x => new { x.ReceitaId, x.IngredienteId });
                     table.ForeignKey(
-                        name: "FK_ReceitaIngrediente_Ingrediente_IngredienteId",
+                        name: "FK_receita_ingrediente_ingredientes_IngredienteId",
                         column: x => x.IngredienteId,
-                        principalTable: "Ingrediente",
+                        principalTable: "ingredientes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ReceitaIngrediente_Receita_ReceitaId",
+                        name: "FK_receita_ingrediente_receitas_ReceitaId",
                         column: x => x.ReceitaId,
-                        principalTable: "Receita",
+                        principalTable: "receitas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -96,8 +96,8 @@ namespace api_receitas.Migrations
                 column: "ReceitasId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ReceitaIngrediente_IngredienteId",
-                table: "ReceitaIngrediente",
+                name: "IX_receita_ingrediente_IngredienteId",
+                table: "receita_ingrediente",
                 column: "IngredienteId");
         }
 
@@ -108,13 +108,13 @@ namespace api_receitas.Migrations
                 name: "IngredienteModelReceitaModel");
 
             migrationBuilder.DropTable(
-                name: "ReceitaIngrediente");
+                name: "receita_ingrediente");
 
             migrationBuilder.DropTable(
-                name: "Ingrediente");
+                name: "ingredientes");
 
             migrationBuilder.DropTable(
-                name: "Receita");
+                name: "receitas");
         }
     }
 }

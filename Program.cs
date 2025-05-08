@@ -27,5 +27,5 @@ app.ReceitaRoutes();
 app.IngredienteRoutes();
 app.ReceitaIngredienteRoutes();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.Run();

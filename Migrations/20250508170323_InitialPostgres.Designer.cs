@@ -12,7 +12,7 @@ using api_receitas.Data;
 namespace api_receitas.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250508122009_InitialPostgres")]
+    [Migration("20250508170323_InitialPostgres")]
     partial class InitialPostgres
     {
         /// <inheritdoc />
@@ -57,7 +57,7 @@ namespace api_receitas.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ingrediente");
+                    b.ToTable("ingredientes", (string)null);
                 });
 
             modelBuilder.Entity("api_receitas.Models.ReceitaIngredienteModel", b =>
@@ -75,7 +75,7 @@ namespace api_receitas.Migrations
 
                     b.HasIndex("IngredienteId");
 
-                    b.ToTable("ReceitaIngrediente");
+                    b.ToTable("receita_ingrediente", (string)null);
                 });
 
             modelBuilder.Entity("api_receitas.Models.ReceitaModel", b =>
@@ -101,7 +101,7 @@ namespace api_receitas.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Receita");
+                    b.ToTable("receitas", (string)null);
                 });
 
             modelBuilder.Entity("IngredienteModelReceitaModel", b =>
