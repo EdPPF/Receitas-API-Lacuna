@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace api_receitas.Migrations
 {
     /// <inheritdoc />
-    public partial class NewInitial : Migration
+    public partial class InitialPostgres : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,10 +15,10 @@ namespace api_receitas.Migrations
                 name: "Ingrediente",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Nome = table.Column<string>(type: "TEXT", nullable: true),
-                    Unidade = table.Column<string>(type: "TEXT", nullable: true),
-                    IsAtivo = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Nome = table.Column<string>(type: "text", nullable: true),
+                    Unidade = table.Column<string>(type: "text", nullable: true),
+                    IsAtivo = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,12 +29,12 @@ namespace api_receitas.Migrations
                 name: "Receita",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Nome = table.Column<string>(type: "TEXT", nullable: true),
-                    ModoPreparo = table.Column<string>(type: "TEXT", nullable: true),
-                    TempoPreparo = table.Column<int>(type: "INTEGER", nullable: false),
-                    Porcoes = table.Column<int>(type: "INTEGER", nullable: false),
-                    IsAtivo = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Nome = table.Column<string>(type: "text", nullable: true),
+                    ModoPreparo = table.Column<string>(type: "text", nullable: true),
+                    TempoPreparo = table.Column<int>(type: "integer", nullable: false),
+                    Porcoes = table.Column<int>(type: "integer", nullable: false),
+                    IsAtivo = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,8 +45,8 @@ namespace api_receitas.Migrations
                 name: "IngredienteModelReceitaModel",
                 columns: table => new
                 {
-                    IngredientesId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ReceitasId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    IngredientesId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ReceitasId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,9 +69,9 @@ namespace api_receitas.Migrations
                 name: "ReceitaIngrediente",
                 columns: table => new
                 {
-                    ReceitaId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    IngredienteId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Quantidade = table.Column<string>(type: "TEXT", nullable: true)
+                    ReceitaId = table.Column<Guid>(type: "uuid", nullable: false),
+                    IngredienteId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Quantidade = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
