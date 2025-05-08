@@ -5,6 +5,8 @@ namespace api_receitas.Data;
 
 public class AppDbContext : DbContext
 {
+	public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
     public DbSet<ReceitaModel> Receita { get; set; }
     public DbSet<IngredienteModel> Ingrediente { get; set; }
     public DbSet<ReceitaIngredienteModel> ReceitaIngrediente { get; set; }
@@ -30,8 +32,9 @@ public class AppDbContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
             // optionsBuilder.UseSqlite("Data Source=receitas.sqlite;");
-            optionsBuilder.UseNpgsql(optionsBuilder.Configuration.GetConnectionString("Default"));
+            optionsBuilder.UseNpgsql();
         }
         base.OnConfiguring(optionsBuilder);
     }
+
 }
