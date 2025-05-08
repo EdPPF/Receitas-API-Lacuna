@@ -7,6 +7,10 @@ COPY *.sln .
 COPY *.csproj ./
 RUN dotnet restore # Baixa dependencias do dotnet
 
+# Instala dotnet-ef
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="${PATH}:/root/.dotnet/tools"
+
 # copy everything else and build app
 COPY . ./
 RUN dotnet publish -c release -o /app --no-restore
