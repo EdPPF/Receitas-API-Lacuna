@@ -26,6 +26,7 @@ var app = builder.Build();
 app.ReceitaRoutes();
 app.IngredienteRoutes();
 app.ReceitaIngredienteRoutes();
+app.HealthRoute();
 
 //app.UseHttpsRedirection();
 app.Run();
