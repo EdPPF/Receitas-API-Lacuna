@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Initialize DbContext
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDbContext>(options =>
-	options.UseNpgsql(connectionString)
+    options.UseNpgsql(connectionString)
 );
 
 var app = builder.Build();
@@ -19,8 +19,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 //}
 
 app.ReceitaRoutes();
