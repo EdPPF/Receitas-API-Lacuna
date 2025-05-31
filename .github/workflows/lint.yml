@@ -1,0 +1,25 @@
+name: DotNetLinter
+# equivalente ao trigger e pr do azure devops
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # setup
+      - name: Setup dotnet 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+      # dependencias
+      - name: Install dependencies
+        run: dotnet restore
+      # lint
+      - name: Lint
+        run: dotnet format

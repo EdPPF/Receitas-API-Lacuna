@@ -6,3 +6,32 @@ jobs:
     steps:
       - checkout: self
         fetchDepth: 0 # Fetch all history for all branches and tags
+
+      # Configura dotnet 8
+      - task: UseDotNet@2
+        displayName: 'Install .NET SDK 8.x'
+        inputs:
+          # packageType: 'sdk'
+          version: '8.x'
+          performMultiLevelLookup: true
+          includePreviewVersions: true
+
+    variables:
+      buildConfiguration: 'Release'
+      # solution: '**/*.sln'
+
+    # Dotnet cli
+    steps:
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'restore'
+        feedsToUse: 'select'
+        vstsFeed: 'vuu829gh29030jv'
+
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
+        arguments: '--configuration $(buildConfiguration)'
+      displayName: 'dotnet build $(buildConfiguration)'
+
+      # Lint é dotnet format
