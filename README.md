@@ -9,3 +9,5 @@ Utilizando **.NET 8.0** e **minimal API** e *EntityFrameworkCore*. Banco de dado
 
 As entidades são *Receita*, *Ingrediente* e *ReceitaIngrediente*. Esta última é a join table para a relação *many to many* entra as duas anteriores.
 Como a join table possui um parâmentro adicional em sua model, foi necessário criá-la como uma classe própria, com seus métodos e rotas.
+
+## Modificação para github actions
